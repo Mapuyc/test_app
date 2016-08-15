@@ -1,0 +1,27 @@
+<div class="wrapper clearfix">
+	<div class="container clearfix">
+		<section class="inner-box clearfix">
+		  <%= div_for post do %>
+			  <article class="entry-item">
+				  <header>
+					  <span class="entry-meta"><%= post.created_at.strftime("%B, %d, %Y")%></span>          
+				  </header>	
+				  <hr>
+    	    <p><%= post.body.html_safe %></p>
+    	  </article>
+
+        <% if post.user_id == current_user.id %>
+          <div class="social-share clearfix">
+                                  	    
+   	        <%= link_to 'Edit', edit_post_path(post), class: "submit-comment", remote: true %>
+   	                        
+   	        <%= link_to 'Delete', post, remote: true, class: "submit-comment", method: :delete, data: {confirm: 'Are you sure about that?'} %>
+ 	                   
+   	      </div>
+        <% end %>
+      <% end %>
+    </section>
+  </div>
+</div>
+
+

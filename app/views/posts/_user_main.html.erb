@@ -1,0 +1,57 @@
+<header id="header">
+  <div class="wrapper">
+    <h1 id="logo-image">
+      <ul>
+        <li><%= current_user.name %> - <%= image_tag(@auth['info']['image'], width: '50', height: '50')%></li>
+        <li><%= link_to "Sign Out", 'sign_out', method: :delete %></li>
+      </ul>
+    </h1>
+  </div><!--end:wrapper-->
+</header>
+
+<%= render 'form' %>
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+
+        <%= render 'user_post', post: post %>
+
+    <div class="wrapper">
+       
+          <div class="respond">
+            <h3 id="reply-title">Leave your comment</h3>
+
+            <%= form_for [post, Comment.new], :html => {:class => 'form_content comments-form'}, remote: true do |f| %>
+              <p class="textarea-block">
+                <%= f.text_field :body, placeholder: "Add a Comment", :required => true %>
+              </p>
+              <p class="form-submit">
+                <%= f.submit "Comment", class: "submit-comment", data: { no_turbolink: true } %>
+              </p>
+            <% end %>
+
+          </div>
+
+      
+      <% if post.comments.any? %>
+      <div class="entry-box-header clearfix">
+        <span>All comments</span>
+         
+       
+        <ul id="<%= post.id %>" class="respond">
+          <%= render :partial => post.comments %>
+        </ul>
+       
+      </div>
+      <% end %>
+    </div>
+  <% end %> 
+
+<% else %>
+
+  <h1 id="logo-image">No Posts found</h1>
+
+<% end %>
+
+
+

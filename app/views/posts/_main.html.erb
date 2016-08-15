@@ -1,0 +1,45 @@
+<header id="header">
+  <div class="wrapper">
+    <h1 id="logo-image">
+      <p>Для добавления и комментирования сообщений выполните вход</p>
+      <ul>
+        <li><%= link_to "auth/facebook" do %><%= image_tag('facebook.ico', width: '50', height: '50')%></li>
+        <% end %>
+      </ul>
+    </h1>
+  </div><!--end:wrapper-->
+</header>
+
+<% if @posts.any? %>
+
+  <% @posts.each do |post| %>
+    
+    <%= render post %>
+
+    <div class="wrapper">
+   
+      <% if post.comments.any? %>
+
+        <div class="entry-box-header clearfix">
+           
+          <span>All comments</span>
+
+          <ul class="respond">
+            <%= render :partial => post.comments %>
+          </ul>
+
+        </div>
+          
+      <% end %>
+
+    </div>
+
+  <% end %>
+
+<% else %>
+
+  <h1 id="logo-image">No Posts found</h1>
+
+<% end %>
+
+

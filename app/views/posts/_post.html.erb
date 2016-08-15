@@ -1,0 +1,15 @@
+<div class="wrapper clearfix">
+	<div class="container clearfix">
+		<section class="inner-box clearfix">
+            <%= div_for post do %>
+                <article class="entry-item">
+				    <header>
+					    <span class="entry-meta"><%= post.created_at.strftime("%B, %d, %Y")%></span>          
+				    </header>	
+				    <hr>
+    	            <p><%= post.body.html_safe %></p>
+    	        </article>
+            <% end %>
+        </section>
+    </div>
+</div>
