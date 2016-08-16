@@ -1,14 +1,12 @@
   
 <li>
-          <div class="comment-meta"> 
-				    <span class="entry-meta">&nbsp;&nbsp;<%= time_ago_in_words(comment.created_at) %> ago</span>
-			    </div><!--comment-meta-->
-			    <p>
-            <%= comment.post_id %>
-             <%= comment.body %>
-          </p>
+     <div class="comment-meta"> 
+				<span class="entry-meta">&nbsp;&nbsp;<%= time_ago_in_words(comment.created_at) %> ago</span>
+		 </div><!--comment-meta-->
+			 <p>
+          <%= comment.body %>
+       </p>
            
-
     <% if current_user %>
  
     <div class="respond">
