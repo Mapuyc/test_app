@@ -3,7 +3,7 @@
 		<div  class="inner-box">
 			<%= form_for @post, :html => {:class => 'submit_form', :id => 'comments-form'}, remote: true do |f| %>
    	            <p class="textarea-block">
-	                <%= f.text_area :body, placeholder: "Put your text here", cols: 140, rows: 10, :required => true %>
+	                <%= f.text_area :body, placeholder: "Put your text here", cols: 120, rows: 10, :required => true %>
 	                <%= f.submit "Create", id: 'submit-comment' %>
 	            </p>
             <% end %>
